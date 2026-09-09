@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portal DNTIC</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: "Segoe UI", Arial, sans-serif;
+    height:100vh;
+    overflow:hidden;
+
+    background: linear-gradient(
+        135deg,
+        rgb(2,45,107) 0%,
+        #0E162A 100%
+    );
+}
+
+.container{
+    display:flex;
+    height:100vh;
+}
+
+/* MENÚ */
+
+.sidebar{
+    width:280px;
+
+    background: linear-gradient(
+        180deg,
+        rgb(2,45,107) 0%,
+        #0E162A 100%
+    );
+
+    border-right:3px solid rgb(2,45,107);
+
+    padding:20px 15px;
+}
+
+.logo{
+    color:white;
+    font-size:24px;
+    font-weight:600;
+    text-align:center;
+
+    padding-bottom:20px;
+    margin-bottom:20px;
+
+    border-bottom:1px solid rgba(255,255,255,0.15);
+}
+
+.menu-btn{
+
+    width:100%;
+    border:none;
+
+    text-align:left;
+
+    font-size:15px;
+
+    color:white;
+
+    background:transparent;
+
+    padding:14px 16px;
+    margin-bottom:8px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:all .25s;
+}
+
+.menu-btn:hover{
+    background:rgba(255,255,255,0.15);
+    transform:translateX(4px);
+}
+
+.menu-btn.active{
+    background:rgb(2,45,107);
+    font-weight:bold;
+    box-shadow:0 0 12px rgba(0,120,255,.35);
+}
+
+/* CONTENIDO */
+
+.content{
+    flex:1;
+    padding:10px;
+}
+
+#visor{
+    width:100%;
+    height:100%;
+    border:none;
+    border-radius:12px;
+
+    background:white;
+
+    box-shadow:
+        0 0 25px rgba(0,0,0,.35);
+}
+
+/* PIE */
+
+.footer{
+    position:absolute;
+    bottom:10px;
+    left:15px;
+
+    color:#a6b3c8;
+    font-size:11px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="sidebar">
+
+        <div class="logo">
+            DNTIC
+        </div>
+
+        <button class="menu-btn active"
+            onclick="cargarInforme(this,
+            'https://app.powerbi.com/view?r=eyJrIjoiZTIyZjcwMWItZDA5OC00MzlmLTkyMGMtZGI2NzNmODU5NDgyIiwidCI6IjQ1NjA2NGY2LTY1ODEtNGZkNS1hMjI0LWY3ODQ0MjQyNDVjOSIsImMiOjF9')">
+            Incidentes DNTIC 2026
+        </button>
+
+        <button class="menu-btn"
+            onclick="cargarInforme(this,
+            'https://app.powerbi.com/view?r=eyJrIjoiMzViOGIzZDUtNzEwMS00NDIzLTk3OWMtMWM2YmIyODAwOTZhIiwidCI6IjQ1NjA2NGY2LTY1ODEtNGZkNS1hMjI0LWY3ODQ0MjQyNDVjOSIsImMiOjF9')">
+            Infraestructura
+        </button>
+
+        <button class="menu-btn"
+            onclick="cargarInforme(this,
+            'https://app.powerbi.com/view?r=eyJrIjoiZWE1OWIwYzYtMDBjMy00NGU1LWJhYjUtZDIzZWUyMWQ3OGRhIiwidCI6IjQ1NjA2NGY2LTY1ODEtNGZkNS1hMjI0LWY3ODQ0MjQyNDVjOSIsImMiOjF9')">
+            Inteligencia
+        </button>
+
+        <button class="menu-btn"
+            onclick="cargarInforme(this,
+            'https://app.powerbi.com/view?r=eyJrIjoiNzE5YzhlYjctMTY0My00Y2U1LTk0YTctYThlZGQ5ZWI1ZWRlIiwidCI6IjQ1NjA2NGY2LTY1ODEtNGZkNS1hMjI0LWY3ODQ0MjQyNDVjOSIsImMiOjF9')">
+            Procesos Técnicos
+        </button>
+
+        <button class="menu-btn"
+            onclick="cargarInforme(this,
+            'https://app.powerbi.com/view?r=eyJrIjoiYzY4MmI2YzUtNmZlMy00YWY0LWIzMGEtYTQ3NjlmZmE1Y2Q3IiwidCI6IjQ1NjA2NGY2LTY1ODEtNGZkNS1hMjI0LWY3ODQ0MjQyNDVjOSIsImMiOjF9')">
+            Proyectos
+        </button>
+
+        <button class="menu-btn"
+            onclick="cargarInforme(this,
+            'https://app.powerbi.com/view?r=eyJrIjoiMGVlMDM1MTYtMDRkNy00MTFhLWEyN2YtYzJmM2Y1NWI0NWIyIiwidCI6IjQ1NjA2NGY2LTY1ODEtNGZkNS1hMjI0LWY3ODQ0MjQyNDVjOSIsImMiOjF9')">
+            Seguridad
+        </button>
+
+        <button class="menu-btn"
+            onclick="cargarInforme(this,
+            'https://app.powerbi.com/view?r=eyJrIjoiZDUyNGRkOTYtZDJjZi00ZThhLTkxNDQtZWNjNWFmNmNlNjI0IiwidCI6IjQ1NjA2NGY2LTY1ODEtNGZkNS1hMjI0LWY3ODQ0MjQyNDVjOSIsImMiOjF9')">
+            Servicios Administrativos
+        </button>
+
+        <div class="footer">
+            Portal de Indicadores DNTIC
+        </div>
+
+    </div>
+
+    <div class="content">
+
+        <iframe
+            id="visor"
+            src="https://app.powerbi.com/view?r=eyJrIjoiZTIyZjcwMWItZDA5OC00MzlmLTkyMGMtZGI2NzNmODU5NDgyIiwidCI6IjQ1NjA2NGY2LTY1ODEtNGZkNS1hMjI0LWY3ODQ0MjQyNDVjOSIsImMiOjF9">
+        </iframe>
+
+    </div>
+
+</div>
+
+<script>
+
+function cargarInforme(boton,url){
+
+    document.getElementById("visor").src=url;
+
+    document
+        .querySelectorAll(".menu-btn")
+        .forEach(btn=>btn.classList.remove("active"));
+
+    boton.classList.add("active");
+}
+
+</script>
+
+</body>
+</html>
